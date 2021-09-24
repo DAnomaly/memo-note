@@ -130,7 +130,6 @@ section {
     overflow: hidden;
     text-overflow:ellipsis; 
     white-space:nowrap;
-
 }
 .content-box .title-box .checkbox{
     float: right;

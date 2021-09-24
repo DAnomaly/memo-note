@@ -11,6 +11,10 @@ function back_btn_action() {
 
 function submit_btn_action() {
     $('#submit_btn').click(function(){
+        if($('#textarea-content').val() == '') {
+            $('#textarea-content').focus();
+            return false;
+        }
         $('#form').submit();
     });
 }

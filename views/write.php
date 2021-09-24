@@ -79,7 +79,7 @@
                         <input type="text" name="title"/>
                     </label>
                     <label class="content" style="display: block;">
-                        <textarea name="content"></textarea>
+                        <textarea id="textarea-content" name="content" placeholder="기억하고 싶은 내용을 간단하게 적어보세요"></textarea>
                     </label>
                 </div>
             </form>
