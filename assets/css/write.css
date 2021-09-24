@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+body {
+    width: 1280px;
+    margin: 0 auto;
+    background-color: #e0e0e0;
+}
+textarea, input, button, select{
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    background: none;
+    font-size: 12px;
+    resize: none;
+    outline: none;
+    color: #202020;
+}
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* header */
+header {
+    position: relative;
+    box-sizing: border-box;
+    width: 860px;
+    margin: 20px auto 0;
+    padding: 10px;
+    border-bottom: 1px solid #00c53b;
+    border-radius: 10px 10px 0 0;
+    background-color: #00ce3e;
+}
+header .title {
+    box-sizing: border-box;
+    color: #eeeeee;
+    font-size: 23px;
+}
+
+/* section */
+section {
+    width: 860px;
+    margin: 0 auto;
+    background-color: #eeeeee;
+    min-height: 800px;
+}
+
+/* .option-box */
+.option-box {
+    display: flex;
+    justify-content: space-between;
+    width: 680px;
+    margin: 0 auto;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    box-sizing: border-box;
+}
+.option-box .option-ul {
+    display: flex;
+    justify-content: left;
+}
+.option-box .option-ul .select-option {
+    display: inline-block;
+    height: 28px;
+    margin: 0 8px;
+    padding: 2px 8px;
+    border: 1px solid #d4d4d4;
+    box-sizing: border-box;
+    color: #868686;
+    background-color: #fefefe;
+    font-size: 15px;
+    text-align: center;
+}
+.option-box .option-ul li:first-of-type .select-option { margin-left: 0;}
+.option-box .option-ul li:last-of-type .select-option { margin-right: 0;}
+.option-box .option-ul .select-option select{
+    min-width: 143px;
+    box-sizing: border-box;
+    color: #868686;
+    font-size: 15px;
+}
+
+/* .memo-box */
+.memo-box {
+    width: 680px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    background-color: #fffef2;
+    box-shadow: 3px 3px 3px #606060;
+    font-size: 14px;
+}
+.memo-box .title-box {
+    height: 42px;
+    padding: 9px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #e5e4d9;
+}
+.memo-box .title-box input {
+    width: 660px;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+.memo-box .content textarea {
+    display: block;
+    width: 680px;
+    height: 640px;
+    margin: 5px auto;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
