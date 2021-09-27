@@ -15,7 +15,7 @@
             <div>
                 <h1 class="title">NOTES</h1>
                 <div class="submenu">
-                    <a href="#" id="delete">
+                    <a href="javascript:void(0);" id="delete">
                         <i class="far fa-trash-alt"></i>
                         <span>
                             삭제
@@ -69,7 +69,8 @@
 
         <!-- section -->
         <section>
-            <div class="content-box">
+            <form id="memos-form" method="post">
+                <div class="content-box">
 <?php
     include_once "../classes/class_db.php";
     
@@ -94,7 +95,7 @@
             echo "<div class=\"memo-box index-". $notes_no ."\">";
             echo "<div class=\"title-box\">";
             echo "<span class=\"title\">".$title."</span>";
-            echo "<span class=\"checkbox\">"."<input class=\"index-check\" type=\"checkbox\" name=\"no\" value=\"{$notes_no}\"/>"."</span>";
+            echo "<span class=\"checkbox\">"."<input class=\"index-check\" type=\"checkbox\" name=\"no[]\" value=\"{$notes_no}\"/>"."</span>";
             echo "</div>";
             echo "<div class=\"content\">";
             echo "<pre>". $content . "</pre>";
@@ -106,7 +107,8 @@
 
     mysqli_free_result($result);
 ?>
-            </div>
+                </div>
+            </form>
         </section>
     </body>
 </html>

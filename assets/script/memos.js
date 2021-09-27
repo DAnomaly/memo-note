@@ -23,7 +23,7 @@ function deleteForCss(){
 
 function deleteAction() {
     $('#delete').click(function(){
-        
-        return false;
+        $('#memos-form').attr('action','../models/m_delete.php');
+        $('#memos-form').submit();
     });
 }
