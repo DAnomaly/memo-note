@@ -9,7 +9,7 @@
             if($result) {
                 echo "location.href='../index.html';";
             } else {
-                echo "alert('메모 작성중 오류가 발생하였습니다.');";
+                echo "alert('메모 작성 중 오류가 발생했습니다.');";
             }
         }
     }
