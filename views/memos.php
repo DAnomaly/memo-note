@@ -32,37 +32,48 @@
         <!-- nav -->
         <nav>
             <div>
-                <ul>
+                <ul class="out-ul">
                     <li>
-                        <a id="cat-0" href="../views/memos.php">전체메모</a>
+                        <a id="cat-0" class="category" href="../views/memos.php">전체메모</a>
+                        <button type="button" id="add-category-btn" title="카테고리 수정">
+                            <i class="far fa-plus-square"></i>
+                        </button>
                     </li>      
-<?php 
-    include_once "../classes/class_db.php";
-    
-    $connection = new DbConnection();
+                    <ul class="in-ul">
+                        <?php 
+                            include_once "../classes/class_db.php";
+                            
+                            $connection = new DbConnection();
 
-    $query = "SELECT category_no, category_name FROM category";
+                            $query = "SELECT category_no, category_name FROM category ORDER BY category_name";
 
-    if($result = $connection -> get_result($query)) {
-
-        echo "<ul>";
-
-        while($row = mysqli_fetch_assoc($result)) {
-            $category_no = $row['category_no'];
-            $category_name = $row['category_name'];
-            echo "<li>";
-            echo "<a id=\"cat-".$category_no."\" href=\"../views/memos.php?cat=".$category_no."\">";
-            echo $category_name;
-            echo "</a>";
-            echo "</li>";
-        }
-
-        echo "</ul>";
-
-    }
-    
-    mysqli_free_result($result);
-?>
+                            if($result = $connection -> get_result($query)) {
+                                while($row = mysqli_fetch_assoc($result)) {
+                                    $category_no = $row['category_no'];
+                                    $category_name = $row['category_name'];
+                                    echo "<li>\n";
+                                    echo "<span class=\"line-decoration\"><i class=\"fas fa-angle-right\"></i></span>\n";
+                                    echo "<a id=\"cat-".$category_no."\" class=\"category\" href=\"../views/memos.php?cat=".$category_no."\">\n"
+                                       . $category_name . "\n"
+                                       . "</a>\n";
+                                    echo "<button type=\"button\" class=\"delete-category-btn\" onclick=\"deleteCategory({$category_no})\" title=\"삭제\" style=\"display: none;\">\n"
+                                       . "<i class=\"fas fa-minus\"></i>\n"
+                                       . "</button>\n";
+                                    echo "</li>\n";
+                                }
+                            }
+                            
+                            mysqli_free_result($result);
+                        ?>
+                        <li id="category-add-li" style="display: none;">
+                            <form id="category-add-form" action="../models/m_category_insert.php">
+                                <input type="text" name="name" placeholder="카테고리이름"/>  
+                                <button title="추가">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
                 </ul>  
             </div>
         </nav>
@@ -71,42 +82,42 @@
         <section>
             <form id="memos-form" method="post">
                 <div class="content-box">
-<?php
-    include_once "../classes/class_db.php";
-    
-    $connection = new DbConnection();
-    
-    $query = "";
+                    <?php
+                        include_once "../classes/class_db.php";
+                        
+                        $connection = new DbConnection();
+                        
+                        $query = "";
 
-    $category = isset($_REQUEST['cat']) ? $_REQUEST['cat'] : "";
-    if($category) {
-        $query = "SELECT notes_no, title, content, category_no FROM notes WHERE category_no = " . $category;
-    } else {
-        $query = "SELECT notes_no, title, content, category_no FROM notes";
-    }
+                        $category = isset($_REQUEST['cat']) ? $_REQUEST['cat'] : "";
+                        if($category) {
+                            $query = "SELECT notes_no, title, content, category_no FROM notes WHERE category_no = " . $category;
+                        } else {
+                            $query = "SELECT notes_no, title, content, category_no FROM notes";
+                        }
 
-    if($result = $connection -> get_result($query)) {
-        while($row = mysqli_fetch_assoc($result)) {
-            $notes_no = $row['notes_no'];
-            $title = $row['title'];
-            $content = $row['content'];
-            $category_no = $row['category_no'];
-            echo "<label>";
-            echo "<div class=\"memo-box index-". $notes_no ."\">";
-            echo "<div class=\"title-box\">";
-            echo "<span class=\"title\">".$title."</span>";
-            echo "<span class=\"checkbox\">"."<input class=\"index-check\" type=\"checkbox\" name=\"no[]\" value=\"{$notes_no}\"/>"."</span>";
-            echo "</div>";
-            echo "<div class=\"content\">";
-            echo "<pre>". $content . "</pre>";
-            echo "</div>";
-            echo "</div>";
-            echo "</label>";
-        }
-    }
+                        if($result = $connection -> get_result($query)) {
+                            while($row = mysqli_fetch_assoc($result)) {
+                                $notes_no = $row['notes_no'];
+                                $title = $row['title'];
+                                $content = $row['content'];
+                                $category_no = $row['category_no'];
+                                echo "<label>";
+                                echo "<div class=\"memo-box index-". $notes_no ."\">";
+                                echo "<div class=\"title-box\">";
+                                echo "<span class=\"title\">".$title."</span>";
+                                echo "<span class=\"checkbox\">"."<input class=\"index-check\" type=\"checkbox\" name=\"no[]\" value=\"{$notes_no}\"/>"."</span>";
+                                echo "</div>";
+                                echo "<div class=\"content\">";
+                                echo "<pre>". $content . "</pre>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</label>";
+                            }
+                        }
 
-    mysqli_free_result($result);
-?>
+                        mysqli_free_result($result);
+                    ?>
                 </div>
             </form>
         </section>

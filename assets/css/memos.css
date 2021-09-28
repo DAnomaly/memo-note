@@ -74,13 +74,16 @@ header .submenu > #delete {
 
 /* nav */
 nav {
-    width: 180px;
+    width: 250px;
     display: block;
     position: -webkit-sticky;
     position: sticky;
+    margin-left: -60px;
+    padding: 8px 0;
     top: 30px;
     float: left;
     border-radius: 3px;
+    font-size: 13px;
     background-color: #f0f0f0;
 }
 nav ul {
@@ -91,6 +94,65 @@ nav ul {
 }
 nav li {
     padding: 3px;
+}
+nav .out-ul > li{
+    border-bottom: 1px solid #acacac;
+}
+nav .out-ul > li button {
+    font-weight: bold;
+    color: #0f500b;
+}
+nav a.category {
+    display: inline-block;
+    width: 158px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #303030;
+    text-decoration: none;
+    font-size: 13px;
+}
+nav a.category:hover {
+    color: #23b0b8;
+}
+nav a.now-category {
+    color: #090909;
+    font-weight: bold;
+}
+nav a.now-category:hover {
+    color: #090909;
+    cursor: default;
+}
+nav .in-ul {
+    padding: 0;
+}
+nav .in-ul .line-decoration {
+    color: #898989;
+    display: inline-block;
+    margin-right: 6px;
+}
+nav .delete-category-btn {
+    color: #fd5555;
+    line-height: 20px;
+    float: right;
+}
+nav #add-category-btn {
+    display: block;
+    float: right;
+    font-size: 15px;
+}
+nav #category-add-li {
+    background-color: #fefefe;
+    margin-top: 4px;
+    border-radius: 4.5px;
+}
+nav #category-add-li input {
+    box-sizing: border-box;
+    width: 180px;
+    padding: 3px 5px;
+}
+nav #category-add-li button {
+    color:#3dc724;
 }
 
 /* section */
