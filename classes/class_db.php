@@ -6,17 +6,26 @@
         private $database = "memopage";
 
         private static $dbConn;
-        /**
-         * DbConnection 생성자<br/>
-         * _db_conn 생성
-         */
-        public function __construct() {
+
+        private function __construct() {
             if(DbConnection::$dbConn == null)
                 DbConnection::$dbConn = mysqli_connect($this -> host, $this -> user, $this -> password, $this -> database);
         }
 
-        public function get_result($query) {
+        private static $instatnce;
+        public static function getInstatnce() {
+            if(DbConnection::$instatnce == null) {
+                DbConnection::$instatnce = new DbConnection();
+            }
+            return DbConnection::$instatnce;
+        }
+
+        public function get_result(string $query) {
             return mysqli_query(DbConnection::$dbConn, $query);
+        }
+
+        public function free_result(mysqli_result $result) {
+            mysqli_free_result($result);
         }
 
     }
